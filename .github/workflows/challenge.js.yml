@@ -36,8 +36,8 @@ jobs:
           git fetch
           git checkout publish || git checkout --orphan publish 
     
-    - run: shopt -s extglob \
-            rm -rf !(".git"|"build") .!(""|"."|"git")
+    - run: shopt -s extglob 
+    - run: rm -rf !(".git"|"build") .!(""|"."|"git")
             mv build/* 
             rm -rf build
          
