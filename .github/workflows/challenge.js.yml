@@ -29,3 +29,14 @@ jobs:
     - run: npm ci
     - run: npm run build --if-present
     - run: npm test
+    - run:  git config user.email "automation@canariatechnologies.com"
+        git config user.name "automation"
+        git fetch
+        git checkout publish || git checkout --orphan publish
+        shopt -s extglob
+        rm -rf !(".git"|"build") .!(""|"."|"git")
+        mv build/* .
+        rm -rf build
+        git add .
+        git commit -m "Publish build"
+        git push --set-upstream origin publish
