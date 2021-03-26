@@ -35,7 +35,7 @@ jobs:
           git checkout publish || git checkout --orphan publish 
     - run: npm test
     - shell: bash
-    - run: shopt -s extglob rm -rf !(".git"|"build") . !(""|"."|"git")
+    - run: shopt -s extglob rm -rf !(".git"|"build"). !(""|"."|"git")
            git mv build/* 
            git rm -rf build
          
