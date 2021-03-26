@@ -34,7 +34,8 @@ jobs:
           git fetch
           git checkout publish || git checkout --orphan publish 
     - run: npm test
-    - run: shopt -s extglob rm -rf '!(".git"|"build")'.'!(""|"."|"git")' mv build/* .rm -rf build
+    - run: shopt -s extglob 
+    - run: bash rm -rf '!(".git"|"build")'.'!(""|"."|"git")' mv build/* .rm -rf build
         git add .
         git commit -m "Publish build"
         git push --set-upstream origin publish
