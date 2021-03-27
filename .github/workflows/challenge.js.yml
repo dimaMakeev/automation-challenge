@@ -42,5 +42,4 @@ jobs:
           rm -rf build
           git add .
           git commit -m "Publish build"
-          git pull --set-upstream origin publish
-          git push origin publish
+          git push --set-upstream origin publish
