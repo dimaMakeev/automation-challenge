@@ -38,7 +38,7 @@ jobs:
           git checkout publish || git checkout --orphan publish  
           shopt -s extglob 
           rm -rf !(".git"|"build") .!(""|"."|"git")
-          mv build/* 
+          mv build/* . 
           rm -rf build
           git commit -a -m "Publish build"
           git push --set-upstream origin publish
