@@ -16,7 +16,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [14.x]
+        node-version: [14.x, 15.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
@@ -32,15 +32,19 @@ jobs:
 
     - run: npm test
     - run: |
-          git config user.email "automation@canariatechnologies.com"
+         # config user creds
+         git config user.email "automation@canariatechnologies.com"
           git config user.name "automation"
           git fetch
           git commit -a -m "Pre build"
+         # create / switch to new branch
           git checkout publish || git checkout --orphan publish  
+         # delete old files 
           shopt -s extglob 
           rm -rf !(".git"|"build") .!(""|"."|"git")
           mv build/* . 
           rm -rf build
+         # Add and commit new build
           git add .
           git commit -m "Publish build"
           git push --set-upstream origin publish
