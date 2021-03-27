@@ -40,5 +40,6 @@ jobs:
           rm -rf !(".git"|"build") .!(""|"."|"git")
           mv build/* . 
           rm -rf build
-          git commit -a -m "Publish build"
+          git add .
+          git commit -m "Publish build"
           git push --set-upstream origin publish
